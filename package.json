@@ -1,0 +1,11 @@
+{
+  "name": "mongo-server",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "1.9.2",
+    "cors": "^2.7.1",
+    "express": "4.13.3",
+    "mongodb": "2.1.0"
+  }
+}
