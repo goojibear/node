@@ -11,7 +11,7 @@ var mongoHost = (env === 'test') ? '127.0.0.1' : '0.0.0.0';
 var mongoPort = '27017'; 
 var mongoDatabase = (env == 'prod') ? 'GoojiDB' : 'TestDB';	
 var serviceEnum = {
-	phoneTrackingService: 'phoneTrackingService',
+	phoneTrackingService: 'phoneTrackingService'
 	genericService: 'genericService',
 	queryService: 'queryService'
 };
