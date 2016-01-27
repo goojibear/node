@@ -90,6 +90,19 @@ CollectionService.prototype.delete = function(collectionName, entityId, callback
 CollectionService.prototype.getByFilter = function(collectionName, filter, callback) {
 	var data = this.db.collection(collectionName).find(filter);
     callback(data);
-}
+};
+
+
+CollectionService.prototype.getArrayByFilter = function(collectionName, filter, callback) {
+	this.getCollection(collectionName, function(error, the_collection) { //A
+      if( error ) callback(error);
+      else {
+		the_collection.find(filter).toArray(function(error, results) { //B
+		  if( error ) callback(error);
+		  else callback(results);
+		});
+      }
+    });
+};
 
 exports.CollectionService = CollectionService;

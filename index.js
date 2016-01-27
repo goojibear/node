@@ -29,6 +29,7 @@ MongoClient = require('mongodb').MongoClient
 CollectionService = require(__dirname + '/dal/collectionService').CollectionService;
 PhoneTrackingService = require(__dirname + '/bl/phoneTrackingService').PhoneTrackingService;
 QueryService = require(__dirname + '/bl/queryService').QueryService;
+LoginService = require(__dirname + '/bl/loginService').LoginService;
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -56,6 +57,31 @@ MongoClient.connect('mongodb://' + mongoHost + ':' + mongoPort + '/' + mongoData
   // Override services
   serviceMap[serviceEnum.phoneTrackingService] = new PhoneTrackingService(collectionService);
   serviceMap[serviceEnum.queryService] = new QueryService(collectionService);
+  serviceMap[serviceEnum.loginService] = new LoginService(collectionService);
+});
+
+app.get('/users', function(req, res) {
+	res.status(200).send({});
+});
+
+app.get('/users/:entity', function(req, res) {
+	res.status(200).send({});
+});
+
+app.post('/users', function(req, res) {
+	res.status(200).send({});
+});
+
+app.put('/users/:entity', function(req, res) {
+	res.status(200).send({});
+});
+
+app.delete('/users/:entity', function(req, res) {
+	res.status(200).send({});
+});
+
+app.post('/login', function(req, res) {
+	serviceMap[serviceEnum.loginService].login(req, res);
 });
 
 app.get('/:collection', function(req, res) {

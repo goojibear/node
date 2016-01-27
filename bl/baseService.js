@@ -27,6 +27,7 @@ BaseService.prototype.getAll = function(collection, req, res){
 
 BaseService.prototype.save = function(collection, object, entity, req, res){
 	if(!entity){
+	    object.utcTimestampServer = Date.parse(new Date());
 		this.collectionService.save(collection, object, function(err,docs) {
           sendResponse(res, err, docs);
 		});

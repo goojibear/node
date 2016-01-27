@@ -12,7 +12,7 @@ QueryService.prototype.getAll = function(collection, req, res){
 		}
    	});
 };
-
+/*
 QueryService.prototype.getData = function(req, res){	
 	this.collectionService.getByFilter(req.params.collection, req.body, function(data) {
 		var resData = [];
@@ -30,6 +30,17 @@ QueryService.prototype.getData = function(req, res){
 	      }
 	    });
 		
+   	});
+};
+*/
+QueryService.prototype.getData = function(req, res){
+	this.collectionService.getArrayByFilter(req.params.collection, req.body, function(data) {
+        if (!data) {
+            res.status(400).send({message: 'could not find data for filter: ' + req.body.toString()});
+        }
+        else {
+            res.status(200).send(data);
+        }
    	});
 };
 
